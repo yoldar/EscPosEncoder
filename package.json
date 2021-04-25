@@ -4,7 +4,7 @@
   "description": "Create a set of commands that can be send to any receipt printer that supports ESC/POS",
   "main": "src/esc-pos-encoder.js",
   "scripts": {
-    "bundle": "browserify src/esc-pos-encoder.js --standalone EscPosEncoder -o dist/esc-pos-encoder.js",
+    "bundle": "browserify src/esc-pos-encoder.js --standalone EscPosEncoder -o dist/esc-pos-encoder.js -t [ babelify --presets [ @babel/preset-env ] ]",
     "uglify": "uglifyjs dist/esc-pos-encoder.js -cm --overwrite -o dist/esc-pos-encoder.js",
     "build": "npm run bundle && npm run uglify",
     "lint": "eslint --fix src/esc-pos-encoder.js",
@@ -28,6 +28,9 @@
   },
   "homepage": "https://github.com/NielsLeenheer/EscPosEncoder#readme",
   "devDependencies": {
+    "@babel/core": "^7.13.16",
+    "@babel/preset-env": "^7.13.15",
+    "babelify": "^10.0.0",
     "browserify": "^16.5.2",
     "chai": "^4.2.0",
     "eslint": "^7.7.0",
@@ -38,8 +41,6 @@
   "dependencies": {
     "buffer-to-uint8array": "^1.1.0",
     "canvas": "^2.6.0",
-    "canvas-dither": "^1.0.0",
-    "canvas-flatten": "^1.0.0",
     "iconv-lite": "^0.6.2",
     "linewrap": "^0.2.1"
   }
